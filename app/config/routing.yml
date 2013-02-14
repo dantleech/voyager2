@@ -1,0 +1,57 @@
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+home_redirect:
+    pattern: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: /cms/simple
+        permanent: true # this for 301
+
+static:
+    pattern: /{_locale}/static
+    defaults:
+        _controller: AcmeMainBundle:Demo:static
+    requirements:
+        _locale: en|de
+
+cmf_create_rest:
+    resource: "@SymfonyCmfCreateBundle/Resources/config/routing/rest.xml"
+
+cmf_create_image:
+    resource: "@SymfonyCmfCreateBundle/Resources/config/routing/image.xml"
+
+admin_wo_locale:
+    pattern: /admin
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sonata_admin_dashboard
+        permanent: true # this for 301
+
+admin_dashboard_wo_locale:
+    pattern: /admin/dashboard
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sonata_admin_dashboard
+        permanent: true # this for 301
+
+admin_dashboard:
+    pattern: /{_locale}/admin/
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sonata_admin_dashboard
+        permanent: true # this for 301
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /{_locale}/admin
+
+sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /{_locale}/admin
+
+fos_js_routing:
+    resource: @FOSJsRoutingBundle/Resources/config/routing/routing.xml

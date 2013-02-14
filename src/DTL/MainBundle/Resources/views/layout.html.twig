@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content=" minimum-scale=1.0, maximum-scale=1.0, width=device-width; user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{% block title %}{{ title|default('Simple CMS')|striptags }}{% endblock %}</title>
+
+    {% block includes %}
+        <link href="{{ asset('bundles/dtlmain/bootstrap/css/bootstrap.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/dtlmain/bootstrap/css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('bundles/dtlmain/css/style.css') }}" type="text/css" rel="stylesheet"/>
+
+        {% include "SymfonyCmfCreateBundle::includecssfiles.html.twig" %}
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+
+    <div id="top" class="row">
+        <div class="span12">
+            <ul id="skiplinks" class="pull-left hidden-desktop">
+                <li><a href="#content" title="Go to main content">Skip to content</a></li>
+                <li><a href="#navigation" title="go to navigation">Skip to navigation</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="banner" class="span12">
+            <a href="https://github.com/symfony-cmf/symfony-cmf-standard"></a>
+            <div class="hero-unit header">
+                <h1 id="logo-text"><a href="{{ path('/cms/simple') }}">Web Developer on Bike</a></h1>
+
+                <p id="slogan">One web developers quest to circumnavigate the globe and write code</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12 navbar">
+            <div class="navbar-inner">
+                {% block navigation %}
+                    {{ knp_menu_render('simple') }}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div id="content">
+                <div class="inner">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Powered by Symfony CMF
+    </div>
+</div>
+{% render "symfony_cmf_create.jsloader.controller:includeJSFilesAction" %}
+</body>
+</html>
+
