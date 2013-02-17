@@ -47,7 +47,7 @@ class LoadTourData extends ContainerAware implements FixtureInterface, OrderedFi
             $p = new Stage;
             $p->setName($stage);
             $p->setStartDate(clone $date);
-            $p->setParent($tour);
+            $p->setTour($tour);
             $dm->persist($p);
 
             for ($ii = 1; $ii <= rand(5,20); $ii++) {
@@ -63,7 +63,7 @@ class LoadTourData extends ContainerAware implements FixtureInterface, OrderedFi
                 $j->setStartAddress($this->faker->address);
                 $j->setEndAddress($this->faker->address);
                 $j->setDate(clone $date);
-                $j->setParent($p);
+                $j->setStage($p);
                 $dm->persist($j);
             }
 
@@ -72,4 +72,3 @@ class LoadTourData extends ContainerAware implements FixtureInterface, OrderedFi
         $dm->flush();
     }
 }
-

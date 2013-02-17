@@ -1,1 +1,12 @@
-<li><a href="{{ path(voyage, {'stage_slug': voyage.slug}) }}">{{ voyage.title }}</li>
+<li>
+    {% if voyage.type == 'journey' %}
+        <a href="{{ path(voyage.stage, {"stage_slug": voyage.stage.slug}) }}#voyage-{{ voyage.slug }}">{{ voyage.title }}</a>
+    {% else %}
+        <a href="{{ path(voyage, {'stage_slug': voyage.slug}) }}">{{ voyage.title }}</a>
+    {% endif %}
+    <ul>
+        {% if voyage.timedVoyages|length > 0 %}
+            {% include "DTLVoyagerBundle:Tour:overview.html.twig" with {"voyages": voyage.timedVoyages} %}
+        {% endif %}
+    </ul>
+</li>

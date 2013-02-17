@@ -100,6 +100,11 @@ class Stage extends TimedVoyage implements RouteAwareInterface
         $this->startDate = $startDate;
     }
 
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
     public function getRoutes()
     {
         $name = 'stage';
@@ -119,5 +124,10 @@ class Stage extends TimedVoyage implements RouteAwareInterface
             $name,
             implode(',', $names)
         ));
+    }
+
+    public function getType()
+    {
+        return 'stage';
     }
 }

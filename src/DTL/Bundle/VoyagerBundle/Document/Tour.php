@@ -77,4 +77,9 @@ class Tour extends TimedVoyage implements RouteAwareInterface
     {
         return $this->routes;
     }
+
+    public function getType()
+    {
+        return 'tour';
+    }
 }

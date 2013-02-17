@@ -4,6 +4,7 @@ namespace DTL\Bundle\VoyagerBundle\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use DTL\Bundle\VoyagerBundle\Model\TimedVoyage;
+use Symfony\Cmf\Bundle\BlogBundle\Util\PostUtils;
 
 /**
  * Journey
@@ -28,6 +29,11 @@ class Journey extends TimedVoyage
     protected $parent;
 
     /**
+     * @PHPCR\ReferenceOne(targetDocument="DTL\Bundle\VoyagerBundle\Document\Stage")
+     */
+    protected $stage;
+
+    /**
      * @PHPCR\Children()
      */
     protected $children;
@@ -45,6 +51,11 @@ class Journey extends TimedVoyage
      * @PHPCR\Long()
      */
     protected $duration;
+
+    /**
+     * @PHPCR\String()
+     */
+    protected $slug;
 
     /**
      * @PHPCR\Double()
@@ -94,6 +105,12 @@ class Journey extends TimedVoyage
     public function setName($name)
     {
         $this->name = $name;
+        $this->slug = PostUtils::slugify($name);
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
     
     public function getParent() 
@@ -101,9 +118,15 @@ class Journey extends TimedVoyage
         return $this->parent;
     }
     
-    public function setParent($parent)
+    public function setStage($stage)
     {
-        $this->parent = $parent;
+        $this->parent = $stage;
+        $this->stage = $stage;
+    }
+
+    public function getStage()
+    {
+        return $this->stage;
     }
 
     public function getStartLatitude() 
@@ -194,5 +217,10 @@ class Journey extends TimedVoyage
     public function setDate(\DateTime $date)
     {
         $this->date = $date;
+    }
+
+    public function getType()
+    {
+        return 'journey';
     }
 }

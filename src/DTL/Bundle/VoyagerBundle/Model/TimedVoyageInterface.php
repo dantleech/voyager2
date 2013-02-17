@@ -7,4 +7,6 @@ interface TimedVoyageInterface
     public function getDistance();
 
     public function getDuration();
+
+    public function getType();
 }

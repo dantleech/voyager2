@@ -4,7 +4,7 @@ namespace DTL\Bundle\VoyagerBundle\Model;
 
 use DTL\Bundle\VoyagerBundle\Model\TimedVoyageInterface;
 
-class TimedVoyage implements TimedVoyageInterface
+abstract class TimedVoyage implements TimedVoyageInterface
 {
     public function getChildren()
     {

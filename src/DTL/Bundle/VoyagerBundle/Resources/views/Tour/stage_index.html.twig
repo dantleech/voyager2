@@ -1,3 +1,8 @@
 {% extends "DTLVoyagerBundle::default_layout.html.twig" %}
+{% block sidebar %}
+    <h2>Overview</h2>
+    {% include "DTLVoyagerBundle:Tour:overview.html.twig" with {"voyages": stage.tour.timedVoyages} %}
+{% endblock %}
 {% block content %}
+<h2>{{ stage.title }}</h2>
 {% endblock %}
