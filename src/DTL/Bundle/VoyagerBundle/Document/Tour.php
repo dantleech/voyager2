@@ -4,13 +4,14 @@ namespace DTL\Bundle\VoyagerBundle\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use DTL\Bundle\VoyagerBundle\Model\TimedVoyage;
+use Symfony\Cmf\Component\Routing\RouteAwareInterface;
 
 /**
  * Tour
  *
  * @PHPCR\Document(referenceable=true)
  */
-class Tour extends TimedVoyage
+class Tour extends TimedVoyage implements RouteAwareInterface
 {
     /** 
      * @PHPCR\Id()
@@ -31,6 +32,11 @@ class Tour extends TimedVoyage
      * @PHPCR\Children()
      */
     protected $children;
+
+    /**
+     * @PHPCR\Referrers(filter="routeContent")
+     */
+    protected $routes;
 
     public function getId()
     {
@@ -65,5 +71,10 @@ class Tour extends TimedVoyage
     public function getChildren()
     {
         return $this->children;
+    }
+
+    public function getRoutes()
+    {
+        return $this->routes;
     }
 }

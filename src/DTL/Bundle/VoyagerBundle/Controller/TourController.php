@@ -25,6 +25,11 @@ class TourController
         return new Response($this->templating->render($template, $params));
     }
 
+    protected function getStageRepo()
+    {
+        return $this->dm->getRepository('DTL\Bundle\VoyagerBundle\Document\Stage');
+    }
+
     public function tourAction(Request $request, $contentDocument)
     {
         $tour = $contentDocument;
@@ -36,9 +41,10 @@ class TourController
         );
     }
 
-    public function stageAction(Request $request, $contentDocument)
+    public function stageAction(Request $request)
     {
-        $stage = $contentDocument;
+        $slug = $request->get('stage_slug');
+        $stage = $this->getStageRepo()->findBySlug($slug);
 
         return $this->render(
             'DTLVoyagerBundle:Tour:stage_index.html.twig', array(

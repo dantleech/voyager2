@@ -30,6 +30,14 @@ class LoadRouteData extends ContainerAware implements FixtureInterface, OrderedF
         $route->setRouteContent($tour);
         $dm->persist($route);
 
+        $stage = new Route;
+        $stage->setName('stage');
+        $stage->setVariablePattern('/{stage_slug}');
+        $stage->setParent($route);
+        $stage->setDefault('_controller', 'dtl_voyager.tour_controller:stageAction');
+        
+        $dm->persist($stage);
+
         $dm->flush();
     }
 }

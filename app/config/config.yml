@@ -83,6 +83,7 @@ symfony_cmf_routing_extra:
         enabled: true
         controllers_by_class:
             DTL\Bundle\VoyagerBundle\Document\Tour: dtl_voyager.tour_controller:tourAction
+            DTL\Bundle\VoyagerBundle\Document\Stage: dtl_voyager.tour_controller:stageAction
             Symfony\Cmf\Bundle\BlogBundle\Document\Blog: symfony_cmf_blog.blog_controller:listAction
 
 symfony_cmf_simple_cms:

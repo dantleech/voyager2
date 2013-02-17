@@ -11,7 +11,10 @@ use Symfony\Cmf\Bundle\BlogBundle\Util\PostUtils;
 /**
  * Stage
  *
- * @PHPCR\Document(referenceable=true)
+ * @PHPCR\Document(
+ *   referenceable=true,
+ *   repositoryClass="DTL\Bundle\VoyagerBundle\Repository\StageRepository"
+ * )
  */
 class Stage extends TimedVoyage implements RouteAwareInterface
 {
@@ -34,6 +37,11 @@ class Stage extends TimedVoyage implements RouteAwareInterface
      * @PHPCR\ParentDocument()
      */
     protected $parent;
+
+    /**
+     * @PHPCR\ReferenceOne(targetDocument="DTL\Bundle\VoyagerBundle\Document\Tour")
+     */
+    protected $tour;
 
     /**
      * @PHPCR\Children()
@@ -65,11 +73,22 @@ class Stage extends TimedVoyage implements RouteAwareInterface
     {
         return $this->parent;
     }
-    
-    public function setParent($parent)
+
+    public function setTour(Tour $tour)
     {
-        $this->parent = $parent;
+        $this->tour = $tour;
+        $this->parent = $tour;
     }
+
+    public function getTour()
+    {
+        return $this->tour;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    } 
 
     public function getStartDate() 
     {
@@ -83,8 +102,22 @@ class Stage extends TimedVoyage implements RouteAwareInterface
 
     public function getRoutes()
     {
-        return array(new Route('/stage', array(
-            '_controller' => 'DTLVoyagerBundle:Tour:stage',
-        )));
+        $name = 'stage';
+        $names = array();
+
+        foreach ($this->getTour()->getRoutes() as $route) {
+            foreach ($route->getRouteChildren() as $child) {
+                $names[] = $child->getName();
+                if ($child->getName() == $name) {
+                    return array($child);
+                }
+            }
+        }
+
+        throw new \Exception(sprintf(
+            'Could not find route with node name "%s", expected one, found "%s"', 
+            $name,
+            implode(',', $names)
+        ));
     }
 }
