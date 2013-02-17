@@ -2288,12 +2288,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony-cmf/BlockBundle.git",
-                "reference": "9cfbfea59fa7e4b9a6e9d6568abaf13c5c6476a5"
+                "reference": "aa90655f6679f2d2e8bfd172b8570fe23c72b483"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony-cmf/BlockBundle/zipball/9cfbfea59fa7e4b9a6e9d6568abaf13c5c6476a5",
-                "reference": "9cfbfea59fa7e4b9a6e9d6568abaf13c5c6476a5",
+                "reference": "aa90655f6679f2d2e8bfd172b8570fe23c72b483",
                 "shasum": ""
             },
             "require": {
@@ -2309,7 +2309,7 @@
             "suggest": {
                 "sonata-project/cache-bundle": "To add caching support for block loading"
             },
-            "time": "2013-02-08 13:34:33",
+            "time": "2013-02-14 10:40:57",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -2620,8 +2620,8 @@
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/http-kernel": ">=2.1,<2.3-dev",
-                "symfony/routing": ">=2.1,<2.3-dev"
+                "symfony/routing": ">=2.1,<2.3-dev",
+                "symfony/http-kernel": ">=2.1,<2.3-dev"
             },
             "time": "2013-01-24 16:09:01",
             "type": "library",
@@ -2659,37 +2659,37 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony-cmf/RoutingExtraBundle.git",
-                "reference": "30784dcbed0c6b904bf51974b28aad0054e85f9d"
+                "reference": "b0567372ddcea516c2ef619b3a2a96d04739611f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony-cmf/RoutingExtraBundle/zipball/30784dcbed0c6b904bf51974b28aad0054e85f9d",
-                "reference": "30784dcbed0c6b904bf51974b28aad0054e85f9d",
+                "url": "https://api.github.com/repos/symfony-cmf/RoutingExtraBundle/zipball/b0567372ddcea516c2ef619b3a2a96d04739611f",
+                "reference": "b0567372ddcea516c2ef619b3a2a96d04739611f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony-cmf/routing": ">=1.0.0-alpha4",
+                "symfony/monolog-bundle": ">=2.1,<2.3-dev",
                 "symfony/framework-bundle": ">=2.1.7,<2.3-dev",
-                "symfony/monolog-bundle": ">=2.1,<2.3-dev"
+                "symfony-cmf/routing": ">=1.0.0-alpha4"
             },
             "require-dev": {
-                "doctrine/doctrine-bundle": "1.*",
-                "doctrine/phpcr-bundle": "1.0.*",
                 "doctrine/phpcr-odm": "1.0.*",
+                "doctrine/phpcr-bundle": "1.0.*",
                 "jackalope/jackalope-doctrine-dbal": "1.0.*",
                 "symfony/class-loader": ">=2.1,<2.3-dev",
-                "symfony/finder": ">=2.1,<2.3-dev",
+                "symfony/yaml": ">=2.1,<2.3-dev",
                 "symfony/form": ">=2.1,<2.3-dev",
-                "symfony/yaml": ">=2.1,<2.3-dev"
+                "symfony/finder": ">=2.1,<2.3-dev",
+                "doctrine/doctrine-bundle": "1.*"
             },
             "suggest": {
-                "doctrine/phpcr-bundle": "To enable support for the PHPCR ODM documents",
                 "doctrine/phpcr-odm": "To enable support for the PHPCR ODM documents",
-                "sonata-project/doctrine-phpcr-admin-bundle": "To provide an admin interface for the PHPCR ODM documents",
-                "symfony-cmf/content-bundle": "To optionally use the configured value for 'content_basepath' from the CoreBundle"
+                "doctrine/phpcr-bundle": "To enable support for the PHPCR ODM documents",
+                "symfony-cmf/content-bundle": "To optionally use the configured value for 'content_basepath' from the CoreBundle",
+                "sonata-project/doctrine-phpcr-admin-bundle": "To provide an admin interface for the PHPCR ODM documents"
             },
-            "time": "2013-02-07 22:41:44",
+            "time": "2013-02-12 20:14:01",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {

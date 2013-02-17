@@ -7,7 +7,7 @@ parameters:
   phpcr_backend: 
       type: jackrabbit
       url: http://localhost:8080/server/
-  phpcr_workspace: travel
+  phpcr_workspace: voyager
   phpcr_user: admin
   phpcr_pass: admin
   database_host: null

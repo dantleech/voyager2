@@ -17,7 +17,7 @@ class TimedVoyage implements TimedVoyageInterface
         $children = $this->getChildren();
 
         foreach ($children as $child) {
-            if ($chid instanceof TimedVoyageInterface) {
+            if ($child instanceof TimedVoyageInterface) {
                 $timedVoyages[] = $child;
             }
         }
@@ -39,5 +39,10 @@ class TimedVoyage implements TimedVoyageInterface
         foreach ($this->getTimedVoyages() as $voyage) {
             $distance += $voyage->getDuration();
         }
+    }
+
+    public function getTitle()
+    {
+        return $this->name;
     }
 }

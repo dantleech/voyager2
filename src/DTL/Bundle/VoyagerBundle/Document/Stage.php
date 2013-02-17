@@ -4,13 +4,16 @@ namespace DTL\Bundle\VoyagerBundle\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use DTL\Bundle\VoyagerBundle\Model\TimedVoyage;
+use Symfony\Cmf\Component\Routing\RouteAwareInterface;
+use Symfony\Component\Routing\Route;
+use Symfony\Cmf\Bundle\BlogBundle\Util\PostUtils;
 
 /**
  * Stage
  *
  * @PHPCR\Document(referenceable=true)
  */
-class Stage extends TimedVoyage
+class Stage extends TimedVoyage implements RouteAwareInterface
 {
     /** 
      * @PHPCR\Id()
@@ -21,6 +24,11 @@ class Stage extends TimedVoyage
      * @PHPCR\NodeName()
      */
     protected $name;
+
+    /**
+     * @PHPCR\String()
+     */
+    protected $slug;
 
     /** 
      * @PHPCR\ParentDocument()
@@ -50,6 +58,7 @@ class Stage extends TimedVoyage
     public function setName($name)
     {
         $this->name = $name;
+        $this->slug = PostUtils::slugify($name);
     }
     
     public function getParent() 
@@ -71,5 +80,11 @@ class Stage extends TimedVoyage
     {
         $this->startDate = $startDate;
     }
-    
+
+    public function getRoutes()
+    {
+        return array(new Route('/stage', array(
+            '_controller' => 'DTLVoyagerBundle:Tour:stage',
+        )));
+    }
 }

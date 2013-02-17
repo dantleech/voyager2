@@ -61,4 +61,9 @@ class Tour extends TimedVoyage
     {
         $this->parent = $parent;
     }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
 }

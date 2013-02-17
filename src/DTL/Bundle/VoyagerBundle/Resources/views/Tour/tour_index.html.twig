@@ -1,4 +1,9 @@
 {% extends "DTLVoyagerBundle::default_layout.html.twig" %}
 {% block content %}
     <h1>{{ tour.name }}</h1>
+    {% for voyage in tour.timedVoyages %}
+        <ul>
+            {% include "DTLVoyagerBundle:Tour:voyage_item.html.twig" %}
+        </ul>
+    {% endfor %}
 {% endblock %}

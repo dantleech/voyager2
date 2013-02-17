@@ -33,5 +33,3 @@ class LoadRouteData extends ContainerAware implements FixtureInterface, OrderedF
         $dm->flush();
     }
 }
-
-
