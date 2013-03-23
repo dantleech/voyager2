@@ -34,7 +34,7 @@ class Tour extends TimedVoyage implements RouteAwareInterface
     protected $children;
 
     /**
-     * @PHPCR\Referrers(filter="routeContent")
+     * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingExtraBundle\Document\Route", referencedBy="routeContent")
      */
     protected $routes;
 

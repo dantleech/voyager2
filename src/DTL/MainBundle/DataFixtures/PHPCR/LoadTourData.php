@@ -53,7 +53,7 @@ class LoadTourData extends ContainerAware implements FixtureInterface, OrderedFi
             for ($ii = 1; $ii <= rand(5,20); $ii++) {
                 $date->modify('+ 1 day');
                 $j = new Journey;
-                $j->setName($this->faker->city.' to '.$this->faker->city);
+                $j->setName(urlencode($this->faker->city.' to '.$this->faker->city));
                 $j->setDistance($meters = (rand(50, 120) * 1000));
                 $j->setDuration($meters * 5);
                 $j->setStartLongitude($this->faker->longitude);
@@ -72,3 +72,4 @@ class LoadTourData extends ContainerAware implements FixtureInterface, OrderedFi
         $dm->flush();
     }
 }
+

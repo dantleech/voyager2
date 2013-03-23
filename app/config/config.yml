@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @DTLVoyagerBundle/Resources/config/routing/autoroute.yml }
 
 framework:
     #esi:             ~
@@ -108,10 +109,7 @@ symfony_cmf_create:
     phpcr_odm: true
 
 symfony_cmf_blog:
-    routing_post_controller: symfony_cmf_blog.blog_controller:viewPost
-    routing_post_prefix: posts
     blog_basepath: /cms/content
-    routing_basepath: /cms/routes
 
 lunetics_locale:
     strict_mode: true

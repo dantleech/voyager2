@@ -27,9 +27,6 @@ class LoadBlogData extends ContainerAware implements FixtureInterface, OrderedFi
         $basepath = $this->container->getParameter('symfony_cmf_blog.blog_basepath');
         NodeHelper::createPath($session, $basepath);
 
-        $routepath = $this->container->getParameter('symfony_cmf_blog.routing_basepath');
-        NodeHelper::createPath($session, $routepath);
-
         $root = $dm->find(null, $basepath);
 
         $this->faker = \Faker\Factory::create();
@@ -49,10 +46,6 @@ class LoadBlogData extends ContainerAware implements FixtureInterface, OrderedFi
             $dm->persist($p);
         }
 
-        $dm->flush();
-
-        $blogRouteManager = $this->container->get('symfony_cmf_blog.blog_route_manager');
-        $blogRouteManager->syncRoutes($blog);
         $dm->flush();
     }
 }

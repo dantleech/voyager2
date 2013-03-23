@@ -31,6 +31,7 @@ class AppKernel extends Kernel
 
             // enable cmf bundles
             new Symfony\Cmf\Bundle\RoutingExtraBundle\SymfonyCmfRoutingExtraBundle(),
+            new Symfony\Cmf\Bundle\RoutingAutoBundle\SymfonyCmfRoutingAutoBundle(),
             new Symfony\Cmf\Bundle\CoreBundle\SymfonyCmfCoreBundle(),
             new Symfony\Cmf\Bundle\MenuBundle\SymfonyCmfMenuBundle(),
             new Symfony\Cmf\Bundle\ContentBundle\SymfonyCmfContentBundle(),
@@ -41,6 +42,7 @@ class AppKernel extends Kernel
 
             new DTL\MainBundle\DTLMainBundle(),
             new DTL\Bundle\VoyagerBundle\DTLVoyagerBundle(),
+            new DTL\Bundle\TimeDistanceBundle\DTLTimeDistanceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

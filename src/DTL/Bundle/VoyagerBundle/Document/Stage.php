@@ -28,11 +28,6 @@ class Stage extends TimedVoyage implements RouteAwareInterface
      */
     protected $name;
 
-    /**
-     * @PHPCR\String()
-     */
-    protected $slug;
-
     /** 
      * @PHPCR\ParentDocument()
      */
@@ -53,6 +48,11 @@ class Stage extends TimedVoyage implements RouteAwareInterface
      */
     protected $startDate;
 
+    /**
+     * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingExtraBundle\Document\Route", referencedBy="routeContent")
+     */
+    protected $routes;
+
     public function getId()
     {
         return $id;
@@ -66,7 +66,6 @@ class Stage extends TimedVoyage implements RouteAwareInterface
     public function setName($name)
     {
         $this->name = $name;
-        $this->slug = PostUtils::slugify($name);
     }
     
     public function getParent() 
@@ -85,11 +84,6 @@ class Stage extends TimedVoyage implements RouteAwareInterface
         return $this->tour;
     }
 
-    public function getSlug()
-    {
-        return $this->slug;
-    } 
-
     public function getStartDate() 
     {
         return $this->startDate;
@@ -107,23 +101,7 @@ class Stage extends TimedVoyage implements RouteAwareInterface
 
     public function getRoutes()
     {
-        $name = 'stage';
-        $names = array();
-
-        foreach ($this->getTour()->getRoutes() as $route) {
-            foreach ($route->getRouteChildren() as $child) {
-                $names[] = $child->getName();
-                if ($child->getName() == $name) {
-                    return array($child);
-                }
-            }
-        }
-
-        throw new \Exception(sprintf(
-            'Could not find route with node name "%s", expected one, found "%s"', 
-            $name,
-            implode(',', $names)
-        ));
+        return $this->routes;
     }
 
     public function getType()
